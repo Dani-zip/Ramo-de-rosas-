@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ramo de rosas</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(#111827, #263b2b);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        /* MENSAJE */
+
+        .mensaje {
+            position: absolute;
+            top: 35px;
+            width: 100%;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 38px;
+            font-weight: bold;
+            color: white;
+            z-index: 50;
+            animation: aparecerTexto 2s ease-out;
+        }
+
+        /* RAMO */
+
+        .ramo {
+            position: relative;
+            width: 330px;
+            height: 600px;
+            animation: aparecer 2s ease-out forwards;
+        }
+
+        /* TALLOS */
+
+        .tallo {
+            position: absolute;
+            bottom: 0;
+            width: 9px;
+            height: 380px;
+            background: linear-gradient(
+                to right,
+                #164d25,
+                #3d963f,
+                #164d25
+            );
+            border-radius: 10px;
+            transform-origin: bottom;
+        }
+
+        .tallo1 {
+            left: 155px;
+            transform: rotate(-12deg);
+        }
+
+        .tallo2 {
+            left: 145px;
+            transform: rotate(4deg);
+        }
+
+        .tallo3 {
+            left: 165px;
+            transform: rotate(17deg);
+        }
+
+        .tallo4 {
+            left: 135px;
+            transform: rotate(-25deg);
+        }
+
+        .tallo5 {
+            left: 175px;
+            transform: rotate(27deg);
+        }
+
+        /* HOJAS */
+
+        .hoja {
+            position: absolute;
+            width: 85px;
+            height: 38px;
+            background: linear-gradient(
+                135deg,
+                #174d28,
+                #4e9d4b
+            );
+            border-radius: 100% 0 100% 0;
+            transform-origin: 100% 50%;
+        }
+
+        .h1 {
+            left: 75px;
+            bottom: 150px;
+            transform: rotate(-25deg);
+        }
+
+        .h2 {
+            left: 180px;
+            bottom: 190px;
+            transform: rotate(25deg);
+        }
+
+        .h3 {
+            left: 85px;
+            bottom: 260px;
+            transform: rotate(-35deg);
+        }
+
+        .h4 {
+            left: 175px;
+            bottom: 290px;
+            transform: rotate(30deg);
+        }
+
+        .h5 {
+            left: 105px;
+            bottom: 100px;
+            transform: rotate(-10deg);
+        }
+
+        /* ROSAS */
+
+        .rosa {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            animation: abrir 2s ease-out forwards;
+        }
+
+        .r1 {
+            left: 100px;
+            bottom: 355px;
+        }
+
+        .r2 {
+            left: 20px;
+            bottom: 300px;
+            transform: scale(.82);
+        }
+
+        .r3 {
+            left: 185px;
+            bottom: 305px;
+            transform: scale(.82);
+        }
+
+        .r4 {
+            left: 55px;
+            bottom: 220px;
+            transform: scale(.65);
+        }
+
+        .r5 {
+            left: 165px;
+            bottom: 225px;
+            transform: scale(.65);
+        }
+
+        /* PÉTALOS */
+
+        .petalo {
+            position: absolute;
+            width: 70px;
+            height: 88px;
+            left: 30px;
+            top: 20px;
+            border-radius: 55% 45% 50% 50%;
+            background:
+                radial-gradient(
+                    circle at 50% 75%,
+                    #ff9aaa 0%,
+                    #e62957 45%,
+                    #9e1236 100%
+                );
+            transform-origin: 50% 90%;
+            box-shadow:
+                inset 0 -8px 10px rgba(90, 0, 25, .25);
+        }
+
+        .p1 { transform: rotate(0deg) translateY(-24px); }
+        .p2 { transform: rotate(45deg) translateY(-24px); }
+        .p3 { transform: rotate(90deg) translateY(-24px); }
+        .p4 { transform: rotate(135deg) translateY(-24px); }
+        .p5 { transform: rotate(180deg) translateY(-24px); }
+        .p6 { transform: rotate(225deg) translateY(-24px); }
+        .p7 { transform: rotate(270deg) translateY(-24px); }
+        .p8 { transform: rotate(315deg) translateY(-24px); }
+
+        /* PÉTALOS INTERIORES */
+
+        .interior {
+            position: absolute;
+            width: 55px;
+            height: 70px;
+            left: 38px;
+            top: 32px;
+            border-radius: 55% 45% 50% 50%;
+            background: linear-gradient(
+                135deg,
+                #ff7892,
+                #b90d3e
+            );
+            transform-origin: 50% 90%;
+        }
+
+        .i1 { transform: rotate(30deg) translateY(-14px); }
+        .i2 { transform: rotate(90deg) translateY(-14px); }
+        .i3 { transform: rotate(150deg) translateY(-14px); }
+        .i4 { transform: rotate(210deg) translateY(-14px); }
+        .i5 { transform: rotate(270deg) translateY(-14px); }
+        .i6 { transform: rotate(330deg) translateY(-14px); }
+
+        /* CENTRO */
+
+        .centro {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            left: 48px;
+            top: 48px;
+            border-radius: 50%;
+            background:
+                radial-gradient(
+                    circle,
+                    #ffb0bc,
+                    #d7194b 60%,
+                    #7e0b2b
+                );
+            box-shadow:
+                0 0 8px rgba(255, 80, 120, .4);
+        }
+
+        /* PAPEL */
+
+        .papel {
+            position: absolute;
+            bottom: 0;
+            left: 75px;
+            width: 180px;
+            height: 160px;
+            background: linear-gradient(
+                135deg,
+                #eeeeee,
+                #c7c7c7
+            );
+            clip-path: polygon(
+                10% 0,
+                90% 0,
+                70% 100%,
+                30% 100%
+            );
+            z-index: 20;
+            opacity: .95;
+        }
+
+        /* CINTA */
+
+        .cinta {
+            position: absolute;
+            bottom: 85px;
+            left: 113px;
+            width: 105px;
+            height: 25px;
+            background: #b52b48;
+            border-radius: 5px;
+            z-index: 21;
+            transform: rotate(-3deg);
+        }
+
+        /* ANIMACIONES */
+
+        @keyframes aparecer {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes abrir {
+            from {
+                transform: scale(.2);
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes aparecerTexto {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="mensaje">Te amo mucho ❤️</h1>
+
+    <div class="ramo">
+
+        <div class="tallo tallo1"></div>
+        <div class="tallo tallo2"></div>
+        <div class="tallo tallo3"></div>
+        <div class="tallo tallo4"></div>
+        <div class="tallo tallo5"></div>
+
+        <div class="hoja h1"></div>
+        <div class="hoja h2"></div>
+        <div class="hoja h3"></div>
+        <div class="hoja h4"></div>
+        <div class="hoja h5"></div>
+
+        <!-- ROSA PRINCIPAL -->
+
+        <div class="rosa r1">
+            <div class="petalo p1"></div>
+            <div class="petalo p2"></div>
+            <div class="petalo p3"></div>
+            <div class="petalo p4"></div>
+            <div class="petalo p5"></div>
+            <div class="petalo p6"></div>
+            <div class="petalo p7"></div>
+            <div class="petalo p8"></div>
+
+            <div class="interior i1"></div>
+            <div class="interior i2"></div>
+            <div class="interior i3"></div>
+            <div class="interior i4"></div>
+            <div class="interior i5"></div>
+            <div class="interior i6"></div>
+
+            <div class="centro"></div>
+        </div>
+
+        <!-- ROSA 2 -->
+
+        <div class="rosa r2">
+            <div class="petalo p1"></div>
+            <div class="petalo p2"></div>
+            <div class="petalo p3"></div>
+            <div class="petalo p4"></div>
+            <div class="petalo p5"></div>
+            <div class="petalo p6"></div>
+            <div class="petalo p7"></div>
+            <div class="petalo p8"></div>
+
+            <div class="interior i1"></div>
+            <div class="interior i2"></div>
+            <div class="interior i3"></div>
+            <div class="interior i4"></div>
+            <div class="interior i5"></div>
+            <div class="interior i6"></div>
+
+            <div class="centro"></div>
+        </div>
+
+        <!-- ROSA 3 -->
+
+        <div class="rosa r3">
+            <div class="petalo p1"></div>
+            <div class="petalo p2"></div>
+            <div class="petalo p3"></div>
+            <div class="petalo p4"></div>
+            <div class="petalo p5"></div>
+            <div class="petalo p6"></div>
+            <div class="petalo p7"></div>
+            <div class="petalo p8"></div>
+
+            <div class="interior i1"></div>
+            <div class="interior i2"></div>
+            <div class="interior i3"></div>
+            <div class="interior i4"></div>
+            <div class="interior i5"></div>
+            <div class="interior i6"></div>
+
+            <div class="centro"></div>
+        </div>
+
+        <!-- ROSA 4 -->
+
+        <div class="rosa r4">
+            <div class="petalo p1"></div>
+            <div class="petalo p2"></div>
+            <div class="petalo p3"></div>
+            <div class="petalo p4"></div>
+            <div class="petalo p5"></div>
+            <div class="petalo p6"></div>
+            <div class="petalo p7"></div>
+            <div class="petalo p8"></div>
+
+            <div class="centro"></div>
+        </div>
+
+        <!-- ROSA 5 -->
+
+        <div class="rosa r5">
+            <div class="petalo p1"></div>
+            <div class="petalo p2"></div>
+            <div class="petalo p3"></div>
+            <div class="petalo p4"></div>
+            <div class="petalo p5"></div>
+            <div class="petalo p6"></div>
+            <div class="petalo p7"></div>
+            <div class="petalo p8"></div>
+
+            <div class="centro"></div>
+        </div>
+
+        <div class="papel"></div>
+        <div class="cinta"></div>
+
+    </div>
+
+</body>
+</html>
